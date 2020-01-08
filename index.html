@@ -96,11 +96,12 @@
   }, false);
 noContext = document.getElementsByClassName('dropzone');
 for (i = 0; i < noContext.length; i++){
-  noContext[i].addEventListener('contextmenu', myFunction);
+  noContext[i].addEventListener('contextmenu', myFunction(e));
 }
-function myFunction() {
+function myFunction(e) {
+  e.preventDefault();
   var x = document.getElementById("demo");
-  x.innerHTML = "You right-clicked inside div!";
+  x.innerHTML = "You right-clicked inside dropzone!";
   x.style.fontSize = "30px";
 }
 
