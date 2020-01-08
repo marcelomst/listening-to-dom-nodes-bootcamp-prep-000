@@ -10,7 +10,6 @@
      }
     </style>
   </head>
-
   <body>
     <main id="main">My ID is "main"!</main>
 
@@ -32,10 +31,87 @@
             4
             <div>
               5
+              <div>
+                6
+                <div class="dropzone">
+                  <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">7, I am dragable
+                  </div>
+                </div>
+                <div class="dropzone"></div> 
+                <div class="dropzone"></div>
+                <div class="dropzone"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <p id="demo"></p>
+  <script>
+    const divs = document.querySelectorAll('div');
+     
+    function viewContent(e) {
+     
+      console.log("Content= " + this.firstChild.nodeValue.trim());
+    }
+     
+    for (let i = 0; i < divs.length; i++) {
+      divs[i].addEventListener('mouseover',viewContent);
+    }
+  var dragged;
+
+  /* events fired on the draggable target */
+  document.addEventListener("drag", function( event ) {
+  }, false);
+  
+  document.addEventListener("dragstart", function( event ) {
+      // store a ref. on the dragged elem
+      dragged = event.target;
+  }, false);
+  
+  document.addEventListener("dragend", function( event ) {
+  }, false);
+  
+  document.addEventListener("dragover", function( event ) {
+      // prevent default to allow drop
+      event.preventDefault();
+  }, false);
+  
+  document.addEventListener("dragenter", function( event ) {
+  }, false);
+  
+  document.addEventListener("dragleave", function( event ) {
+  }, false);
+  
+  document.addEventListener("drop", function( event ) {
+      // prevent default action (open as link for some elements)
+      event.preventDefault();
+      // move dragged elem to the selected drop target
+      if ( event.target.className == "dropzone" ) {
+          event.target.style.background = "";
+          dragged.parentNode.removeChild( dragged );
+          event.target.appendChild( dragged );
+      }
+    
+  }, false);
+noContext = document.getElementsByClassName('dropzone');
+for (i = 0; i < noContext.length; i++){
+  noContext[i].addEventListener('contextmenu', myFunction);
+  noContext[i].addEventListener('click', myFunctionClick)
+}
+function myFunction(e) {
+  e.preventDefault();
+  var x = document.getElementById("demo");
+  x.innerHTML = "You right-clicked inside dropzone!";
+  x.style.fontSize = "30px";
+}
+function myFunctionClick(e) {
+  e.preventDefault();
+  var x = document.getElementById("demo");
+  x.innerHTML = "";
+}
+
+
+  </script>
   </body>
 </html>
