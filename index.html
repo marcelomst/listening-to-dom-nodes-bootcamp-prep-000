@@ -98,6 +98,11 @@ noContext = document.getElementsByClassName('dropzone');
 for (i = 0; i < noContext.length; i++){
   noContext[i].addEventListener('contextmenu', myFunction);
 }
+function myFunction() {
+  var x = document.getElementById("demo");
+  x.innerHTML = "You right-clicked inside div!";
+  x.style.fontSize = "30px";
+}
 
   </script>
   </body>
