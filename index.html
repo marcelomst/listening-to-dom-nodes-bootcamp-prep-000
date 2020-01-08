@@ -98,6 +98,9 @@ for (i = 0; i < noContext.length; i++){
   noContext[i].addEventListener('contextmenu', e => {
      e.preventDefault();
   });
+  noContext[i].addEventListener('oncontextmenu', e => {
+    console.log('I am a Contextual Menu');
+  });
   }
   </script>
   </body>
