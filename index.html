@@ -105,6 +105,11 @@ function myFunction(e) {
   x.innerHTML = "You right-clicked inside dropzone!";
   x.style.fontSize = "30px";
 }
+function myFunctionClick(e) {
+  e.preventDefault();
+  var x = document.getElementById("demo");
+  x.innerHTML = "";
+}
 
 
   </script>
